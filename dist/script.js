@@ -1,2 +1,2 @@
-const testString="This is a test!";console.log(testString);const fruits=["mango","papaya","lychee"];fruits.map((t=>{console.log(t)}));
+const rulesBtn=document.querySelector("[data-rules-btn]"),closeBtn=document.querySelector("[data-close-btn]"),modal=document.querySelector("[data-modal");rulesBtn.addEventListener("click",(e=>{modal.classList.add("show-modal")})),closeBtn.addEventListener("click",(()=>{modal.classList.remove("show-modal")}));
 //# sourceMappingURL=script.js.map

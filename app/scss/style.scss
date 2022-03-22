@@ -23,7 +23,10 @@ body {
   background: radial-gradient(at top, u.$radialGradient1, u.$radialGradient2);
 }
 .wrapper {
+  width: 100%;
+  height: 100%;
   border: 1px solid white;
+  position: relative;
 }
 
 header {
@@ -32,13 +35,15 @@ header {
   @include u.d-flex(row, space-between, center);
   width: 85%;
   max-width: u.pxToRem(700px);
+  min-height: u.pxToRem(97px);
   margin: 0 auto;
   margin-top: u.pxToRem(34px);
-  padding: 1rem;
 
   .logo {
     width: u.pxToRem(90px);
-    height: 100%;
+    // height: 100%;
+    margin: 1.2rem;
+    min-height: 50px;
 
     @include u.desktop {
       width: u.pxToRem(170px);
@@ -53,6 +58,8 @@ header {
     width: u.pxToRem(80px);
     border-radius: 0.6rem;
     padding: 1rem;
+    margin: 1rem;
+    min-height: u.pxToRem(73px);
 
     @include u.desktop {
       width: u.pxToRem(150px);
@@ -89,8 +96,8 @@ header {
   min-height: u.pxToRem(290px);
 
   border: 1px solid magenta;
-  margin: 0 auto;
-  margin-top: u.pxToRem(97px);
+
+  margin: u.pxToRem(97px) auto;
   display: grid;
   grid-template-areas:
     "paper scissor"
@@ -100,6 +107,7 @@ header {
 
   @include u.desktop {
     gap: 5rem;
+    margin: 2rem auto;
   }
 
   &::before {
@@ -149,14 +157,22 @@ header {
     @include u.desktop {
       width: u.pxToRem(140px);
       height: u.pxToRem(140px);
+
+      img {
+        width: u.pxToRem(70px);
+        height: u.pxToRem(70px);
+      }
     }
+
     background: #fff;
     border-radius: 50%;
     display: grid;
     place-items: center;
     box-shadow: inset 0 0.36rem rgba(0, 0, 0, 0.3);
 
-    &::before {
+    // todo added :;after for hover effect
+    &::before,
+    &::after {
       content: " ";
       position: absolute;
       left: -15%;
@@ -192,5 +208,134 @@ header {
     &[data-rock]::before {
       background: linear-gradient(to bottom, u.$rockGradient, u.$rockGradient2);
     }
+
+    &::after {
+      opacity: 0;
+      transition: opacity 400ms ease;
+    }
+  }
+
+  .choice-btn:focus .choice-img::after {
+    opacity: 1;
+    box-shadow: 0 0 0 2rem #223351;
+    z-index: -2;
+  }
+}
+
+// -rules button
+
+.rules-container {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+
+  .rules-btn {
+    width: u.pxToRem(130px);
+    height: u.pxToRem(40px);
+
+    color: #fff;
+    text-transform: uppercase;
+    font-size: u.pxToRem(14px);
+    font-family: inherit;
+
+    letter-spacing: 1px;
+    background: none;
+    outline: none;
+    border: 1px solid #fff;
+    border-radius: 0.4rem;
+
+    &:focus {
+      border: 5px solid #fff;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    @include u.desktop {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      margin-right: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+// -modals
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.7);
+
+  .modal-wrap {
+    background: #fff;
+    border: 2px solid red;
+    @include u.d-flex(column, space-between, center);
+    width: 100%;
+    height: 100%;
+    padding: u.pxToRem(60px) 0;
+
+    @include u.desktop {
+      position: relative;
+      padding: 2rem;
+      align-items: flex-start;
+
+      img {
+        margin: 0 auto;
+      }
+    }
+    .rules-text {
+      font-size: u.pxToRem(24px);
+      text-transform: uppercase;
+      margin-top: 1rem;
+      color: u.$darkText;
+      border: 2px solid red;
+
+      @include u.desktop {
+        margin-top: 0;
+      }
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      outline: none;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      @include u.desktop {
+        position: absolute;
+        top: 2.5rem;
+        right: 2rem;
+      }
+    }
+
+    @include u.desktop {
+      width: u.pxToRem(405px);
+      height: u.pxToRem(420px);
+      border-radius: 0.5rem;
+    }
+  }
+
+  display: none;
+}
+
+// -todo show modal( using js)
+
+.show-modal {
+  display: block;
+
+  @include u.desktop {
+    background-color: rgba(0, 0, 0, 0.3);
+    @include u.d-flex(row, center, center);
   }
 }

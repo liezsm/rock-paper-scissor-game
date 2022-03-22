@@ -1,9 +1,14 @@
-const testString = "This is a test!";
+const rulesBtn = document.querySelector("[data-rules-btn]");
 
-console.log(testString);
+const closeBtn = document.querySelector("[data-close-btn]");
 
-const fruits = ["mango", "papaya", "lychee"];
+const modal = document.querySelector("[data-modal");
+// todo fire a click even on rule button to show the rules modal
 
-fruits.map((fruit) => {
-  console.log(fruit);
+rulesBtn.addEventListener("click", (e) => {
+  modal.classList.add("show-modal");
+});
+
+closeBtn.addEventListener("click", () => {
+  modal.classList.remove("show-modal");
 });
