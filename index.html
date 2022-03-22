@@ -17,7 +17,43 @@
     <!-- Score Rules You Picked The House Picked You Win You Lose Play Again -->
   </head>
   <body>
-    <
+    <div class="wrapper">
+      <header class="header">
+        <img
+          src="./images/logo.svg"
+          alt="rock-paper-scissor logo"
+          class="logo"
+        />
+        <div class="score-container">
+          <p class="score-text">Score</p>
+          <div class="score-number">12</div>
+        </div>
+      </header>
+
+      <main>
+        <div class="game-container">
+          <button class="choice-btn" data-armor="paper">
+            <div class="choice-img" data-paper>
+              <img src="./images/icon-paper.svg" alt="paper" />
+            </div>
+          </button>
+
+          <button class="choice-btn" data-armor="scissors">
+            <div class="choice-img" data-scissor>
+              <img src="./images/icon-scissors.svg" alt="scissors" />
+            </div>
+          </button>
+          <button class="choice-btn" data-armor="rock">
+            <div class="choice-img" data-rock>
+              <img src="./images/icon-rock.svg" alt="rock" />
+            </div>
+          </button>
+        </div>
+        <div class="rules-container">
+          <button>Rules</button>
+        </div>
+      </main>
+    </div>
     <script src="./app/js/script.js"></script>
   </body>
 </html>

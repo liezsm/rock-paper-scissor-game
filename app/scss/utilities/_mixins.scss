@@ -1,6 +1,22 @@
+@use "sass:math";
+@use "variables" as v;
+
+// todo display flex
 @mixin d-flex($dir, $jc, $ai) {
   display: flex;
   flex-direction: $dir;
   justify-content: $jc;
   align-items: $ai;
+}
+// todo convert px to rem
+@function pxToRem($pxValue) {
+  @return math.div($pxValue, 16px) * 1rem;
+}
+
+//  todo screen sizes responsive
+
+@mixin desktop {
+  @media (min-width: v.$tablet) {
+    @content;
+  }
 }

@@ -1,1 +1,34 @@
-$red: red;
+//   screen sizes
+
+$mobile: 375px;
+$tablet: 769px;
+$desktop: 1366px;
+
+//- ## Colors
+
+// -### Primary
+
+$scissorsGradient: hsl(39, 89%, 49%);
+$scissorsGradient2: hsl(40, 84%, 53%);
+$paperGradient: hsl(230, 89%, 62%);
+$paperGradient2: hsl(230, 89%, 65%);
+$rockGradient: hsl(349, 71%, 52%);
+$rockGradient2: hsl(349, 70%, 56%);
+
+// $cyan: hsl(189, 59%, 53%) to hsl(189, 58%, 57%);
+
+// -### Neutral
+
+$darkText: hsl(229, 25%, 31%);
+$scoreText: hsl(229, 64%, 46%);
+$headerOutline: hsl(217, 16%, 45%);
+
+// -### Background
+
+$radialGradient1: hsl(214, 47%, 23%);
+$radialGradient2: hsl(237, 49%, 15%);
+
+// -## Fonts
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap");
+
+$font-family: "Barlow Semi Condensed", sans-serif;

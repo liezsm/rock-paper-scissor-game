@@ -9,13 +9,188 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   margin: 0;
   padding: 0;
   line-height: 1.3;
-  background-color: u.$red;
+  width: 100%;
+  min-height: 100vh;
+  font-family: u.$font-family;
+  background: radial-gradient(at top, u.$radialGradient1, u.$radialGradient2);
+}
+.wrapper {
+  border: 1px solid white;
+}
 
-  @include u.d-flex(column, center, center);
+header {
+  border: 2px solid u.$headerOutline;
+  border-radius: 0.7rem;
+  @include u.d-flex(row, space-between, center);
+  width: 85%;
+  max-width: u.pxToRem(700px);
+  margin: 0 auto;
+  margin-top: u.pxToRem(34px);
+  padding: 1rem;
+
+  .logo {
+    width: u.pxToRem(90px);
+    height: 100%;
+
+    @include u.desktop {
+      width: u.pxToRem(170px);
+    }
+  }
+
+  .score-container {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: u.pxToRem(80px);
+    border-radius: 0.6rem;
+    padding: 1rem;
+
+    @include u.desktop {
+      width: u.pxToRem(150px);
+    }
+
+    .score-text {
+      color: u.$scoreText;
+      font-size: u.pxToRem(10px);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      @include u.desktop {
+        font-size: u.pxToRem(14px);
+      }
+    }
+
+    .score-number {
+      font-size: u.pxToRem(30px);
+      color: u.$darkText;
+      font-weight: bold;
+
+      @include u.desktop {
+        font-size: u.pxToRem(47px);
+      }
+    }
+  }
+}
+
+// -game component
+
+.game-container {
+  width: 100%;
+  padding: 1rem;
+  max-width: u.pxToRem(500px);
+  min-height: u.pxToRem(290px);
+
+  border: 1px solid magenta;
+  margin: 0 auto;
+  margin-top: u.pxToRem(97px);
+  display: grid;
+  grid-template-areas:
+    "paper scissor"
+    "rock rock";
+  gap: 1rem;
+  position: relative;
+
+  @include u.desktop {
+    gap: 5rem;
+  }
+
+  &::before {
+    content: " ";
+    position: absolute;
+    width: 50%;
+    height: 70%;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url(/images/bg-triangle.svg) no-repeat;
+    background-size: contain;
+    // border: 2px solid yellow;
+    z-index: -1;
+
+    @include u.desktop {
+      width: 100%;
+      height: 70%;
+      top: 55%;
+      left: 75%;
+    }
+  }
+  .choice-btn {
+    width: u.pxToRem(100px);
+    margin: 0 auto;
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  .choice-btn[data-armor="paper"] {
+    grid-area: paper;
+  }
+  .choice-btn[data-armor="scissor"] {
+    grid-area: scissor;
+  }
+  .choice-btn[data-armor="rock"] {
+    grid-area: rock;
+  }
+
+  .choice-img {
+    position: relative;
+    width: u.pxToRem(100px);
+    height: u.pxToRem(100px);
+
+    @include u.desktop {
+      width: u.pxToRem(140px);
+      height: u.pxToRem(140px);
+    }
+    background: #fff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    box-shadow: inset 0 0.36rem rgba(0, 0, 0, 0.3);
+
+    &::before {
+      content: " ";
+      position: absolute;
+      left: -15%;
+      top: -15%;
+      width: 130%;
+      height: 130%;
+      border-radius: 50%;
+      // background: linear-gradient(
+      //   to bottom,
+      //   u.$paperGradient,
+      //   u.$paperGradient2
+      // );
+      z-index: -1;
+      box-shadow: inset 0 -0.36rem rgba(0, 0, 0, 0.4);
+    }
+
+    &[data-paper]::before {
+      background: linear-gradient(
+        to bottom,
+        u.$paperGradient,
+        u.$paperGradient2
+      );
+    }
+
+    &[data-scissor]::before {
+      background: linear-gradient(
+        to bottom,
+        u.$scissorsGradient,
+        u.$scissorsGradient2
+      );
+    }
+
+    &[data-rock]::before {
+      background: linear-gradient(to bottom, u.$rockGradient, u.$rockGradient2);
+    }
+  }
 }
