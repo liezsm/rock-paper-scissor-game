@@ -4,7 +4,9 @@
   "description": "![Design preview for the Rock, Paper, Scissors coding challenge](./design/desktop-preview.jpg)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +21,7 @@
     "gulp-terser": "^2.1.0"
   },
   "devDependencies": {
+    "gh-pages": "^3.2.3",
     "sass": "^1.49.9"
   }
 }
