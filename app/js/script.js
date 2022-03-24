@@ -24,8 +24,7 @@ const choicesBtns = document.querySelectorAll("[data-armor");
 
 // todo function to dynamically change the image depending on player's choices
 function choiceIntoUI(player, picked) {
-  // const parent = document.querySelector(`.${player}-picked`);
-  // console.log(`.${player}-picked`);
+  // todo first, remove the circle bg
   document
     .querySelector(`[data-${player}-choice]`)
     .classList.remove("result-item");
@@ -33,7 +32,7 @@ function choiceIntoUI(player, picked) {
     <button class="choice-btn" data-armor="${picked}">
         
             <div class="choice-img " data-${picked}>
-              <img src="./images/icon-${picked}.svg" alt=${picked} />
+              <img src="./dist/images/icon-${picked}.svg" alt=${picked} />
             </div>
           </button>
     `;
@@ -60,10 +59,8 @@ choicesBtns.forEach((btn) => {
       choiceIntoUI("comp", computer);
     }, 1500);
     const result = whoIsTheWinner(userChoice, computer);
-    console.log(userChoice, computer, result);
+    // console.log(userChoice, computer, result);
     displayResult(result);
-
-    // console.log(updateScore(result));
   });
 });
 
