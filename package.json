@@ -1,6 +1,7 @@
 {
   "name": "rock-paper-scissors-master",
   "version": "1.0.0",
+  "homepage": "https://liezsm.github.io/rock-paper-scissor-game",
   "description": "![Design preview for the Rock, Paper, Scissors coding challenge](./design/desktop-preview.jpg)",
   "main": "index.js",
   "scripts": {
