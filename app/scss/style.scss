@@ -8,7 +8,7 @@ html {
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -25,7 +25,6 @@ body {
 .wrapper {
   width: 100%;
   height: 100%;
-  border: 1px solid white;
   position: relative;
 }
 
@@ -40,7 +39,7 @@ header {
   margin-top: u.pxToRem(34px);
 
   .logo {
-    width: u.pxToRem(90px);
+    width: u.pxToRem(80px);
     // height: 100%;
     margin: 1.2rem;
     min-height: 50px;
@@ -93,9 +92,7 @@ header {
   width: 100%;
   padding: 1rem;
   max-width: u.pxToRem(500px);
-  min-height: u.pxToRem(290px);
-
-  border: 1px solid magenta;
+  min-height: u.pxToRem(280px);
 
   margin: u.pxToRem(97px) auto;
   display: grid;
@@ -144,7 +141,7 @@ header {
 .choice-btn[data-armor="paper"] {
   grid-area: paper;
 }
-.choice-btn[data-armor="scissor"] {
+.choice-btn[data-armor="scissors"] {
   grid-area: scissor;
 }
 .choice-btn[data-armor="rock"] {
@@ -195,7 +192,7 @@ header {
     background: linear-gradient(to bottom, u.$paperGradient, u.$paperGradient2);
   }
 
-  &[data-scissor]::before {
+  &[data-scissors]::before {
     background: linear-gradient(
       to bottom,
       u.$scissorsGradient,
@@ -272,7 +269,6 @@ header {
 
   .modal-wrap {
     background: #fff;
-    border: 2px solid red;
     @include u.d-flex(column, space-between, center);
     width: 100%;
     height: 100%;
@@ -292,7 +288,6 @@ header {
       text-transform: uppercase;
       margin-top: 1rem;
       color: u.$darkText;
-      border: 2px solid red;
 
       @include u.desktop {
         margin-top: 0;
@@ -350,13 +345,29 @@ header {
   max-width: 1000px;
   margin: 0 auto;
   gap: 2.5rem;
-  border: 2px solid red;
-  padding: 2rem;
-  text-align: center;
 
+  padding: 4rem 2rem;
+  color: #fff;
+  text-align: center;
+  display: none;
   > * {
-    border: 1px solid white;
     padding: 1rem;
+  }
+  h1 {
+    font-size: u.pxToRem(41px);
+    text-transform: uppercase;
+    font-weight: 700;
+
+    @include u.desktop {
+      font-size: u.pxToRem(50px);
+    }
+  }
+  h2 {
+    font-size: u.pxToRem(13px);
+
+    @include u.desktop {
+      font-size: u.pxToRem(18px);
+    }
   }
 }
 
@@ -370,12 +381,82 @@ h2[data-user-pick] {
   grid-area: user;
 }
 
-.computer-picked {
+.comp-picked {
   grid-area: computer-armor;
   min-height: 160px;
   height: auto;
 }
 
-h2[data-computer-pick] {
+h2[data-comp-pick] {
   grid-area: computer;
+}
+
+[data-play-again-btn] {
+  text-transform: uppercase;
+  background-color: #fff;
+  width: u.pxToRem(222px);
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 1rem 0;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  margin-top: 2rem;
+
+  &:hover {
+    cursor: pointer;
+    color: u.$rockGradient2;
+  }
+
+  @include u.desktop {
+    font-size: u.pxToRem(20px);
+  }
+}
+// todo cirlce background upon picking a choice
+.result-item {
+  width: 10rem;
+  height: 10rem;
+  background: #16213d;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+// todo show result container
+
+.show-result {
+  display: grid;
+  grid-template-areas:
+    "user-armor computer-armor"
+    "user           computer "
+    "result       result";
+
+  @include u.desktop {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "user  result   computer"
+      "user-armor        result   computer-armor";
+    place-items: center;
+  }
+}
+
+// todo show the final result fo the game and play again button
+
+.hidden {
+  display: none;
+}
+
+.show-winner {
+  grid-area: result;
+}
+
+// todo add the winner glow effect
+
+.winner .choice-img::after {
+  opacity: 1;
+  box-shadow: 0 0 0 20px #293251, 0 0 0 70px #232c4b, 0 0 0 100px #1e2949;
+  z-index: -99;
+
+  @include u.desktop {
+    box-shadow: 0 0 0 50px #293251, 0 0 0 100px #232c4b, 0 0 0 170px #1e2949;
+  }
 }

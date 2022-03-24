@@ -20,7 +20,7 @@
         />
         <div class="score-container">
           <p class="score-text">Score</p>
-          <div class="score-number">12</div>
+          <div class="score-number" id="score">0</div>
         </div>
       </header>
 
@@ -34,7 +34,7 @@
           </button>
 
           <button class="choice-btn" data-armor="scissors">
-            <div class="choice-img" data-scissor>
+            <div class="choice-img" data-scissors>
               <img src="./images/icon-scissors.svg" alt="scissors" />
             </div>
           </button>
@@ -43,6 +43,21 @@
               <img src="./images/icon-rock.svg" alt="rock" />
             </div>
           </button>
+        </div>
+
+        <!-- -ui for picking an armor/choice -->
+
+        <div class="result">
+          <div class="result-item user-picked" data-user-choice></div>
+          <h2 data-user-pick></h2>
+
+          <div class="result-item comp-picked" data-comp-choice></div>
+          <h2 data-comp-pick></h2>
+
+          <div class="show-winner hidden">
+            <h1 class="result-of-the-game" data-result-text></h1>
+            <button class="play-again" data-play-again-btn>Play Again</button>
+          </div>
         </div>
 
         <div class="rules-container">
@@ -60,32 +75,6 @@
             <img src="/images/icon-close.svg" alt="" class="close-img" />
           </button>
         </div>
-      </section>
-
-      <!-- -ui for picking an armor/choice -->
-
-      <section class="result">
-        <div class="user-picked">
-          <div class="user-picked-armor">
-            <button class="choice-btn" data-armor="paper">
-              <div class="choice-img" data-paper>
-                <img src="./images/icon-paper.svg" alt="paper" />
-              </div>
-            </button>
-          </div>
-        </div>
-        <h2 data-user-pick>YOU PICKED</h2>
-
-        <div class="computer-picked">
-          <div class="computer-picked-armor">
-            <button class="choice-btn" data-armor="paper">
-              <div class="choice-img" data-paper>
-                <img src="./images/icon-paper.svg" alt="paper" />
-              </div>
-            </button>
-          </div>
-        </div>
-        <h2 data-computer-pick>THE HOUSE PICKED</h2>
       </section>
     </div>
 
