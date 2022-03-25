@@ -215,6 +215,14 @@ header {
   box-shadow: 0 0 0 2rem #223351;
   z-index: -2;
 }
+
+//  - flip the image
+
+.flip-choice-img {
+  img {
+    transform: scaleX(-1);
+  }
+}
 // -rules button
 
 .rules-container {

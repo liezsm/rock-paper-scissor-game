@@ -28,10 +28,12 @@ function choiceIntoUI(player, picked) {
   document
     .querySelector(`[data-${player}-choice]`)
     .classList.remove("result-item");
+  const isImageFlip =
+    player == "comp" ? "choice-img flip-choice-img" : "choice-img";
   document.querySelector(`[data-${player}-choice]`).innerHTML = `
     <button class="choice-btn" data-armor="${picked}">
         
-            <div class="choice-img " data-${picked}>
+            <div class="${isImageFlip}" data-${picked}>
               <img src="./dist/images/icon-${picked}.svg" alt=${picked} />
             </div>
           </button>
